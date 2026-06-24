@@ -30,6 +30,8 @@ export const STANDARD_SERVICES = {
 
 // --- Write Characteristic UUIDs (common candidates) ---
 export const WRITE_CHAR_UUIDS = [
+  // ✅ Confirmed via nRF Connect (chhfegkj watch) — under service 0xAE00
+  '0000AE01-0000-1000-8000-00805F9B34FB',
   '0000FEE9-0000-1000-8000-00805F9B34FB',
   '0000FFE1-0000-1000-8000-00805F9B34FB',
   '0000FF01-0000-1000-8000-00805F9B34FB',
@@ -38,6 +40,8 @@ export const WRITE_CHAR_UUIDS = [
 
 // --- Notify Characteristic UUIDs (common candidates) ---
 export const NOTIFY_CHAR_UUIDS = [
+  // ✅ Confirmed via nRF Connect (chhfegkj watch) — under service 0xAE00
+  '0000AE02-0000-1000-8000-00805F9B34FB',
   '0000FEE8-0000-1000-8000-00805F9B34FB',
   '0000FFE4-0000-1000-8000-00805F9B34FB',
   '0000FF02-0000-1000-8000-00805F9B34FB',
