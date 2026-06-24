@@ -1,37 +1,4 @@
 {
-  "expo": {
-    "name": "Watch Reset & Explorer",
-    "slug": "watch-reset-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
-    "splash": {
-      "backgroundColor": "#0a0a0a"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#0a0a0a"
-      },
-      "permissions": [
-        "android.permission.BLUETOOTH",
-        "android.permission.BLUETOOTH_ADMIN",
-        "android.permission.BLUETOOTH_SCAN",
-        "android.permission.BLUETOOTH_CONNECT",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.ACCESS_COARSE_LOCATION"
-      ],
-      "package": "com.watchreset.app"
-    },
-    "plugins": [
-      [
-        "react-native-ble-plx",
-        {
-          "isBackgroundEnabled": true,
-          "modes": ["peripheral", "central"],
-          "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to Bluetooth devices"
-        }
-      ]
-    ]
-  }
+  "name": "WatchResetApp",
+  "displayName": "Watch Reset & Explorer"
 }

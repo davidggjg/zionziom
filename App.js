@@ -1,7 +1,7 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StatusBar } from 'expo-status-bar';
 import ScanScreen from './src/screens/ScanScreen';
 import DeviceScreen from './src/screens/DeviceScreen';
 
@@ -22,7 +22,7 @@ const DarkTheme = {
 export default function App() {
   return (
     <NavigationContainer theme={DarkTheme}>
-      <StatusBar style="light" />
+      <StatusBar barStyle="light-content" backgroundColor="#0a0a0a" />
       <Stack.Navigator
         screenOptions={{
           headerStyle: { backgroundColor: '#111' },
