@@ -6,6 +6,9 @@
 
 // --- Known Proprietary Service UUIDs (common in ODM watches) ---
 export const KNOWN_SERVICE_UUIDS = [
+  // ✅ Confirmed via nRF Connect on this exact watch (chhfegkj / Heylink)
+  '0000AE00-0000-1000-8000-00805F9B34FB',
+  '00003802-0000-1000-8000-00805F9B34FB',
   // Jieli / generic ODM primary service
   '0000FEE7-0000-1000-8000-00805F9B34FB',
   '0000FEE0-0000-1000-8000-00805F9B34FB',
