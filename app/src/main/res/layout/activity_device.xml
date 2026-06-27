@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/connStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connecting..."
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discovered services / characteristics:"
+                android:textStyle="bold"
+                android:paddingTop="6dp"/>
+
+            <TextView
+                android:id="@+id/servicesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textSize="11sp"
+                android:text="(none yet)"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notify / Indicate log:"
+                android:textStyle="bold"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:id="@+id/notifyLogText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textSize="11sp"
+                android:text=""/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        android:layout_marginVertical="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Service UUID (128-bit, e.g. 0000fee7-0000-1000-8000-00805f9b34fb):"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/serviceUuidInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="service UUID"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Write Characteristic UUID:"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/writeCharUuidInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="write characteristic UUID"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hex bytes to send (e.g. AB 00 01 02 CD):"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/hexInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AB 00 01 02 CD"
+        android:fontFamily="monospace"/>
+
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send raw bytes to watch"
+        android:layout_marginTop="6dp"/>
+
+    <Button
+        android:id="@+id/subscribeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subscribe to Notify on this service's notify characteristic"
+        android:layout_marginTop="6dp"/>
+
+</LinearLayout>
