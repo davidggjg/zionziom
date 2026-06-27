@@ -1,3 +1,43 @@
 <resources>
-    <string name="app_name">BLE Watch Explorer</string>
+    <string name="app_name">חוקר Bluetooth לשעון</string>
+
+    <!-- Scan screen -->
+    <string name="scan_title">חוקר Bluetooth לשעון</string>
+    <string name="scan_button">סריקת מכשירים</string>
+    <string name="toast_enable_bluetooth">נא להפעיל Bluetooth קודם</string>
+    <string name="toast_scanner_unavailable">סקאנר BLE לא זמין במכשיר הזה</string>
+    <string name="toast_permissions_required">נדרשות הרשאות Bluetooth כדי לסרוק</string>
+    <string name="toast_scan_failed">הסריקה נכשלה, קוד שגיאה %1$d</string>
+    <string name="device_unnamed">(מכשיר ללא שם)</string>
+    <string name="device_rssi">עוצמת אות: %1$d dBm</string>
+
+    <!-- Device screen -->
+    <string name="status_connecting">מתחבר אל %1$s …</string>
+    <string name="status_connected_discovering">מחובר. מגלה שירותים…</string>
+    <string name="status_connected_count">מחובר. התגלו %1$d שירותים.</string>
+    <string name="status_disconnected">החיבור נסגר (קוד %1$d)</string>
+    <string name="status_discovery_failed">גילוי השירותים נכשל: %1$d</string>
+    <string name="status_missing_permission">חסרה הרשאת BLUETOOTH_CONNECT</string>
+
+    <string name="label_services">שירותים ומאפיינים שהתגלו:</string>
+    <string name="placeholder_none">(עדיין אין מידע)</string>
+    <string name="label_notify_log">יומן Notify / Indicate:</string>
+
+    <string name="label_service_uuid">UUID של השירות (128 סיביות, לדוגמה: 0000fee7-0000-1000-8000-00805f9b34fb):</string>
+    <string name="hint_service_uuid">UUID של השירות</string>
+    <string name="label_write_char_uuid">UUID של מאפיין הכתיבה (Write):</string>
+    <string name="hint_write_char_uuid">UUID של מאפיין הכתיבה</string>
+    <string name="label_hex_bytes">בייטים בפורמט hex לשליחה (לדוגמה: AB 00 01 02 CD):</string>
+    <string name="hint_hex_bytes">AB 00 01 02 CD</string>
+
+    <string name="button_send">שלח בייטים גולמיים לשעון</string>
+    <string name="button_subscribe">הירשם ל-Notify על מאפייני השירות הזה</string>
+
+    <string name="toast_invalid_input">קלט לא תקין (UUID או hex): %1$s</string>
+    <string name="toast_invalid_service_uuid">UUID של שירות לא תקין: %1$s</string>
+    <string name="toast_service_not_found">השירות לא נמצא במכשיר הזה</string>
+    <string name="toast_char_not_found">המאפיין לא נמצא בשירות הזה</string>
+    <string name="toast_sent_bytes">נשלח: %1$s</string>
+    <string name="toast_write_status">כתיבה ל-%1$s ← סטטוס %2$d</string>
+    <string name="toast_subscribed_count">נרשמת ל-%1$d מאפיינים</string>
 </resources>

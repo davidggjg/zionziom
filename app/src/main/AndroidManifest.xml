@@ -16,7 +16,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="BLE Watch Explorer"
+        android:label="@string/app_name"
         android:icon="@android:drawable/ic_menu_compass"
         android:theme="@style/Theme.BleWatchTool"
         android:supportsRtl="true">

@@ -51,9 +51,10 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.VH> {
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
         DeviceItem item = items.get(position);
-        holder.name.setText(item.name == null || item.name.isEmpty() ? "(unnamed device)" : item.name);
+        String unnamed = holder.itemView.getContext().getString(R.string.device_unnamed);
+        holder.name.setText(item.name == null || item.name.isEmpty() ? unnamed : item.name);
         holder.address.setText(item.address);
-        holder.rssi.setText("RSSI: " + item.rssi + " dBm");
+        holder.rssi.setText(holder.itemView.getContext().getString(R.string.device_rssi, item.rssi));
         holder.itemView.setOnClickListener(v -> listener.onClick(item));
     }
 

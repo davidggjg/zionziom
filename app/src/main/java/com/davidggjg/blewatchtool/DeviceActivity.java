@@ -74,7 +74,7 @@ public class DeviceActivity extends AppCompatActivity {
                 byte[] bytes = hexStringToBytes(hexInput.getText().toString());
                 writeBytes(svc, chr, bytes);
             } catch (Exception e) {
-                Toast.makeText(this, "Invalid UUID or hex input: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.toast_invalid_input, e.getMessage()), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -83,7 +83,7 @@ public class DeviceActivity extends AppCompatActivity {
                 UUID svc = UUID.fromString(normalizeUuid(serviceUuidInput.getText().toString()));
                 subscribeToAllNotify(svc);
             } catch (Exception e) {
-                Toast.makeText(this, "Invalid service UUID: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.toast_invalid_service_uuid, e.getMessage()), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -130,14 +130,14 @@ public class DeviceActivity extends AppCompatActivity {
 
     private void connectTo(String address) {
         if (!hasConnectPermission()) {
-            Toast.makeText(this, "Missing BLUETOOTH_CONNECT permission", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.status_missing_permission), Toast.LENGTH_LONG).show();
             finish();
             return;
         }
         BluetoothManager bm = getSystemService(BluetoothManager.class);
         BluetoothAdapter adapter = bm.getAdapter();
         BluetoothDevice device = adapter.getRemoteDevice(address);
-        connStatus.setText("Connecting to " + address + " ...");
+        connStatus.setText(getString(R.string.status_connecting, address));
         gatt = device.connectGatt(this, false, gattCallback, BluetoothDevice.TRANSPORT_LE);
     }
 
@@ -146,17 +146,17 @@ public class DeviceActivity extends AppCompatActivity {
         public void onConnectionStateChange(BluetoothGatt g, int status, int newState) {
             if (!hasConnectPermission()) return;
             if (newState == BluetoothProfile.STATE_CONNECTED) {
-                mainHandler.post(() -> connStatus.setText("Connected. Discovering services..."));
+                mainHandler.post(() -> connStatus.setText(getString(R.string.status_connected_discovering)));
                 g.discoverServices();
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                mainHandler.post(() -> connStatus.setText("Disconnected (status " + status + ")"));
+                mainHandler.post(() -> connStatus.setText(getString(R.string.status_disconnected, status)));
             }
         }
 
         @Override
         public void onServicesDiscovered(BluetoothGatt g, int status) {
             if (status != BluetoothGatt.GATT_SUCCESS) {
-                mainHandler.post(() -> connStatus.setText("Service discovery failed: " + status));
+                mainHandler.post(() -> connStatus.setText(getString(R.string.status_discovery_failed, status)));
                 return;
             }
             StringBuilder sb = new StringBuilder();
@@ -170,7 +170,7 @@ public class DeviceActivity extends AppCompatActivity {
                 }
             }
             mainHandler.post(() -> {
-                connStatus.setText("Connected. " + services.size() + " services discovered.");
+                connStatus.setText(getString(R.string.status_connected_count, services.size()));
                 servicesText.setText(sb.toString());
             });
         }
@@ -183,7 +183,7 @@ public class DeviceActivity extends AppCompatActivity {
         @Override
         public void onCharacteristicWrite(BluetoothGatt g, BluetoothGattCharacteristic characteristic, int status) {
             mainHandler.post(() -> Toast.makeText(DeviceActivity.this,
-                    "Write to " + characteristic.getUuid() + " -> status " + status,
+                    getString(R.string.toast_write_status, characteristic.getUuid().toString(), status),
                     Toast.LENGTH_SHORT).show());
         }
     };
@@ -208,12 +208,12 @@ public class DeviceActivity extends AppCompatActivity {
         if (gatt == null || !hasConnectPermission()) return;
         BluetoothGattService service = gatt.getService(serviceUuid);
         if (service == null) {
-            Toast.makeText(this, "Service not found on this device", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.toast_service_not_found), Toast.LENGTH_LONG).show();
             return;
         }
         BluetoothGattCharacteristic characteristic = service.getCharacteristic(charUuid);
         if (characteristic == null) {
-            Toast.makeText(this, "Characteristic not found on this service", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.toast_char_not_found), Toast.LENGTH_LONG).show();
             return;
         }
         int writeType = (characteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE) != 0
@@ -227,14 +227,14 @@ public class DeviceActivity extends AppCompatActivity {
             characteristic.setValue(bytes);
             gatt.writeCharacteristic(characteristic);
         }
-        Toast.makeText(this, "Sent " + bytesToHex(bytes), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.toast_sent_bytes, bytesToHex(bytes)), Toast.LENGTH_SHORT).show();
     }
 
     private void subscribeToAllNotify(UUID serviceUuid) {
         if (gatt == null || !hasConnectPermission()) return;
         BluetoothGattService service = gatt.getService(serviceUuid);
         if (service == null) {
-            Toast.makeText(this, "Service not found", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.toast_service_not_found), Toast.LENGTH_LONG).show();
             return;
         }
         int count = 0;
@@ -257,7 +257,7 @@ public class DeviceActivity extends AppCompatActivity {
             }
             count++;
         }
-        Toast.makeText(this, "Subscribed to " + count + " characteristic(s)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.toast_subscribed_count, count), Toast.LENGTH_SHORT).show();
     }
 
     @Override

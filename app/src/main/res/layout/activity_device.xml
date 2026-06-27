@@ -9,7 +9,6 @@
         android:id="@+id/connStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connecting..."
         android:textStyle="bold"
         android:paddingBottom="8dp"/>
 
@@ -26,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Discovered services / characteristics:"
+                android:text="@string/label_services"
                 android:textStyle="bold"
                 android:paddingTop="6dp"/>
 
@@ -36,12 +35,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:textSize="11sp"
-                android:text="(none yet)"/>
+                android:text="@string/placeholder_none"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Notify / Indicate log:"
+                android:text="@string/label_notify_log"
                 android:textStyle="bold"
                 android:paddingTop="10dp"/>
 
@@ -65,52 +64,52 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Service UUID (128-bit, e.g. 0000fee7-0000-1000-8000-00805f9b34fb):"
+        android:text="@string/label_service_uuid"
         android:textSize="12sp"/>
 
     <EditText
         android:id="@+id/serviceUuidInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="service UUID"/>
+        android:hint="@string/hint_service_uuid"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Write Characteristic UUID:"
+        android:text="@string/label_write_char_uuid"
         android:textSize="12sp"/>
 
     <EditText
         android:id="@+id/writeCharUuidInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="write characteristic UUID"/>
+        android:hint="@string/hint_write_char_uuid"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hex bytes to send (e.g. AB 00 01 02 CD):"
+        android:text="@string/label_hex_bytes"
         android:textSize="12sp"/>
 
     <EditText
         android:id="@+id/hexInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="AB 00 01 02 CD"
+        android:hint="@string/hint_hex_bytes"
         android:fontFamily="monospace"/>
 
     <Button
         android:id="@+id/sendButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send raw bytes to watch"
+        android:text="@string/button_send"
         android:layout_marginTop="6dp"/>
 
     <Button
         android:id="@+id/subscribeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Subscribe to Notify on this service's notify characteristic"
+        android:text="@string/button_subscribe"
         android:layout_marginTop="6dp"/>
 
 </LinearLayout>

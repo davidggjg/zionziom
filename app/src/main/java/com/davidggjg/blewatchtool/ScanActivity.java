@@ -59,7 +59,7 @@ public class ScanActivity extends AppCompatActivity {
         @Override
         public void onScanFailed(int errorCode) {
             runOnUiThread(() -> Toast.makeText(ScanActivity.this,
-                    "Scan failed, error code " + errorCode, Toast.LENGTH_LONG).show());
+                    getString(R.string.toast_scan_failed, errorCode), Toast.LENGTH_LONG).show());
             stopScan();
         }
     };
@@ -127,7 +127,7 @@ public class ScanActivity extends AppCompatActivity {
         if (requestCode == REQ_PERMISSIONS && hasAllPermissions()) {
             startScan();
         } else if (requestCode == REQ_PERMISSIONS) {
-            Toast.makeText(this, "Bluetooth permissions are required to scan", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.toast_permissions_required), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -136,12 +136,12 @@ public class ScanActivity extends AppCompatActivity {
         BluetoothManager bm = getSystemService(BluetoothManager.class);
         BluetoothAdapter adapter1 = bm.getAdapter();
         if (adapter1 == null || !adapter1.isEnabled()) {
-            Toast.makeText(this, "Please enable Bluetooth first", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.toast_enable_bluetooth), Toast.LENGTH_LONG).show();
             return;
         }
         scanner = adapter1.getBluetoothLeScanner();
         if (scanner == null) {
-            Toast.makeText(this, "BLE scanner unavailable on this device", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.toast_scanner_unavailable), Toast.LENGTH_LONG).show();
             return;
         }
         adapter.clear();
