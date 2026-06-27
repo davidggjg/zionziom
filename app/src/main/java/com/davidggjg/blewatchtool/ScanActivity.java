@@ -121,7 +121,7 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, androidx.annotation.NonNull String[] permissions,
+    public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions,
                                             @androidx.annotation.NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQ_PERMISSIONS && hasAllPermissions()) {
